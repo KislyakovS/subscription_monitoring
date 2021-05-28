@@ -50,7 +50,9 @@ class _ButtomNavigationScreenState extends State<ButtomNavigationScreen> {
   IconButton _buildBaseButton(int index) {
     return IconButton(
       icon: _icons[index],
-      color: _currentIndex == index ? colorActiveNavButton : colorNavButton,
+      color: _currentIndex == index
+          ? colorSelectedNavItem
+          : colorUnselectedNavItem,
       onPressed: () => _onTapNavItem(index),
     );
   }
@@ -58,11 +60,11 @@ class _ButtomNavigationScreenState extends State<ButtomNavigationScreen> {
   ElevatedButton _buildCircleButton(int index) {
     return ElevatedButton(
       style: ButtonStyle(
-          padding:
-              MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
-          shape: MaterialStateProperty.all<CircleBorder>(const CircleBorder()),
-          backgroundColor:
-              MaterialStateProperty.all<Color>(colorActiveNavButton)),
+        padding:
+            MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
+        shape: MaterialStateProperty.all<CircleBorder>(const CircleBorder()),
+        backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
+      ),
       onPressed: () => _onTapNavItem(index),
       child: _icons[index],
     );
