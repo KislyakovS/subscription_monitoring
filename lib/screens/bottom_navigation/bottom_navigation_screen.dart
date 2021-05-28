@@ -30,6 +30,8 @@ class _ButtomNavigationScreenState extends State<ButtomNavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
+        elevation: 1,
+        color: defaultBackground,
         notchMargin: 10,
         child: Container(
           height: 60,
