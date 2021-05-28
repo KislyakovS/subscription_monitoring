@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/theme.dart';
 
 import 'routes.dart';
-import 'screens/bottom_navigation_screen.dart';
+import 'screens/bottom_navigation/bottom_navigation_screen.dart';
 
 void main() => runApp(MyApp());
 

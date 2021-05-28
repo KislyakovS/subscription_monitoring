@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../../colors.dart';
 
 class ButtomNavigationScreen extends StatefulWidget {
   static String routeName = 'buttom_navigation';
