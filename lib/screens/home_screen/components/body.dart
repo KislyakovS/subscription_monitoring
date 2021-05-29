@@ -10,15 +10,15 @@ class Body extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: defaultPaddingScreen),
       child: ListView.separated(
           itemBuilder: (context, index) {
-            if (index == 9) {
+            if (index == demoSubscriptions.length) {
               return const SizedBox(height: 10);
             }
 
             return SubscriptionCard(
-                subscription: demoSubscription, press: () {});
+                subscription: demoSubscriptions[index], press: () {});
           },
           separatorBuilder: (context, _) => const SizedBox(height: 20),
-          itemCount: 10),
+          itemCount: demoSubscriptions.length + 1),
     );
   }
 }
