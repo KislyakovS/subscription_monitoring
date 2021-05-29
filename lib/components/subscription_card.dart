@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/colors.dart';
+import 'package:subscription_monitoring/components/line_percent.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 
 class SubscriptionCard extends StatelessWidget {
@@ -48,7 +49,11 @@ class SubscriptionCard extends StatelessWidget {
           const SizedBox(height: 5),
           SizedBox(
             width: double.infinity,
-            child: CustomPaint(painter: MyPainter()),
+            child: LinePercent(
+              fillColor: primaryColor.withOpacity(0.7),
+              lineColor: primaryColor,
+              procent: 0.8,
+            ),
           ),
           const SizedBox(height: 15),
           Text.rich(
@@ -69,28 +74,5 @@ class SubscriptionCard extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class MyPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint1 = Paint()
-      ..color = primaryColor.withOpacity(0.5)
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 5;
-
-    final paint2 = Paint()
-      ..color = primaryColor
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 5;
-
-    canvas.drawLine(Offset(0, 0), Offset(size.width, 0), paint1);
-    canvas.drawLine(Offset(0, 0), Offset(150, 0), paint2);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
   }
 }
