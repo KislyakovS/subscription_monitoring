@@ -34,7 +34,8 @@ class _ButtomNavigationScreenState extends State<ButtomNavigationScreen> {
         color: defaultBackground,
         notchMargin: 10,
         child: Container(
-          height: 60,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(
@@ -63,7 +64,7 @@ class _ButtomNavigationScreenState extends State<ButtomNavigationScreen> {
     return ElevatedButton(
       style: ButtonStyle(
         padding:
-            MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
+            MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(12)),
         shape: MaterialStateProperty.all<CircleBorder>(const CircleBorder()),
         backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
       ),
