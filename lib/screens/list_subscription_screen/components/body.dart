@@ -17,11 +17,9 @@ class Body extends StatelessWidget {
 
           return Wrapper(
             padding: 15,
-            borderRadius: 15,
             child: SubscriptionHeader(
               subscription: demoSubscriptions[index],
               imageSize: 60,
-              borderRadius: 10,
             ),
           );
         },
