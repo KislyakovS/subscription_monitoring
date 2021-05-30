@@ -52,7 +52,7 @@ class Painter extends CustomPainter {
     paint.strokeCap = StrokeCap.round;
     paint.strokeWidth = strokeWidth;
 
-    canvas.drawLine(Offset(0, 0), Offset(size.width, 0), paint);
+    canvas.drawLine(const Offset(0, 0), Offset(size.width, 0), paint);
   }
 
   void drawLine(Canvas canvas, Size size) {
@@ -61,7 +61,7 @@ class Painter extends CustomPainter {
     paint.strokeCap = StrokeCap.round;
     paint.strokeWidth = strokeWidth;
 
-    canvas.drawLine(Offset(0, 0), Offset(size.width * procent, 0), paint);
+    canvas.drawLine(const Offset(0, 0), Offset(size.width * procent, 0), paint);
   }
 
   @override
