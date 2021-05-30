@@ -6,11 +6,13 @@ import 'package:subscription_monitoring/models/Subscription.dart';
 class SubscriptionHeader extends StatelessWidget {
   final Subscription subscription;
   final double imageSize;
+  final double borderRadius;
   final bool isShowDate;
 
   const SubscriptionHeader({
     Key? key,
     required this.subscription,
+    this.borderRadius = 15,
     this.imageSize = 70,
     this.isShowDate = false,
   }) : super(key: key);
@@ -30,7 +32,7 @@ class SubscriptionHeader extends StatelessWidget {
 
   ClipRRect _buildIamge() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(borderRadius),
       child: Image.network(
         subscription.imageSrc,
         width: imageSize,
