@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:subscription_monitoring/screens/calendar_screen/calendar_screen.dart';
+import 'package:subscription_monitoring/screens/home_screen/home_screen.dart';
+import 'package:subscription_monitoring/screens/list_subscription_screen/list_subscription_screen.dart';
+import 'package:subscription_monitoring/screens/settings_screen/settings_screen.dart';
+import 'package:subscription_monitoring/screens/statistics_screen/statistics_screen.dart';
 
 import '../../colors.dart';
 
@@ -20,15 +25,26 @@ class _ButtomNavigationScreenState extends State<ButtomNavigationScreen> {
     const Icon(Icons.settings)
   ];
 
+  final _screens = [
+    HomeScreen(),
+    StatisticsScreen(),
+    ListSubscriptionScreen(),
+    CalendarScreen(),
+    SettingsScreen(),
+  ];
+
   void _onTapNavItem(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    if (index != _currentIndex) {
+      setState(() {
+        _currentIndex = index;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: _screens[_currentIndex],
       bottomNavigationBar: BottomAppBar(
         elevation: 1,
         color: defaultBackground,
