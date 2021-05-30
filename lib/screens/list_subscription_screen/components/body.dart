@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:subscription_monitoring/components/bouncing_button.dart';
 import 'package:subscription_monitoring/components/subscription_header.dart';
 import 'package:subscription_monitoring/components/wrapper.dart';
 import 'package:subscription_monitoring/constants.dart';
@@ -15,11 +16,14 @@ class Body extends StatelessWidget {
             return const SizedBox(height: 20);
           }
 
-          return Wrapper(
-            padding: 15,
-            child: SubscriptionHeader(
-              subscription: demoSubscriptions[index],
-              imageSize: 60,
+          return BouncingButton(
+            press: () {},
+            child: Wrapper(
+              padding: 15,
+              child: SubscriptionHeader(
+                subscription: demoSubscriptions[index],
+                imageSize: 60,
+              ),
             ),
           );
         },
