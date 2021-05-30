@@ -12,7 +12,7 @@ class Body extends StatelessWidget {
       child: ListView.separated(
         itemBuilder: (context, index) {
           if (index == demoSubscriptions.length) {
-            return const SizedBox(height: 10);
+            return const SizedBox(height: 20);
           }
 
           return Wrapper(
