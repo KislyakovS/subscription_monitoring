@@ -1,14 +1,13 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'indicator.dart';
 
-class PieChartSample2 extends StatefulWidget {
+class ChartPie extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => PieChart2State();
+  State<StatefulWidget> createState() => ChartPieState();
 }
 
-class PieChart2State extends State {
+class ChartPieState extends State<ChartPie> {
   int touchedIndex = -1;
 
   @override

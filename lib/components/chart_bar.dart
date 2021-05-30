@@ -2,12 +2,12 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/colors.dart';
 
-class BarChartSimple extends StatefulWidget {
+class ChartBar extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => BarChartSimpleState();
+  State<StatefulWidget> createState() => ChartBarState();
 }
 
-class BarChartSimpleState extends State<BarChartSimple> {
+class ChartBarState extends State<ChartBar> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
