@@ -52,7 +52,8 @@ class _BodyState extends State<Body> {
             ListSubscription(
               subscriptions: _selectedSubscription,
               date: _selectedDay,
-            )
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
