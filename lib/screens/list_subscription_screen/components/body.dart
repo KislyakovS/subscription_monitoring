@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/components/subscription_card.dart';
+import 'package:subscription_monitoring/components/subscription_header.dart';
+import 'package:subscription_monitoring/components/wrapper.dart';
 import 'package:subscription_monitoring/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 
@@ -14,8 +15,13 @@ class Body extends StatelessWidget {
             return const SizedBox(height: 10);
           }
 
-          return SubscriptionCard(
-              subscription: demoSubscriptions[index], press: () {});
+          return Wrapper(
+            padding: 15,
+            child: SubscriptionHeader(
+              subscription: demoSubscriptions[index],
+              imageSize: 60,
+            ),
+          );
         },
         separatorBuilder: (context, _) => const SizedBox(height: 20),
         itemCount: demoSubscriptions.length + 1,
