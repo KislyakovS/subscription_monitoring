@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'components/body.dart';
 
-class HomeScreen extends StatelessWidget {
-  static String routeName = '/home';
+class CalendarScreen extends StatelessWidget {
+  static String routeName = '/calendar';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'My Subscriptions',
+          'Calendar',
           style: TextStyle(color: Colors.black),
         ),
       ),
