@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:subscription_monitoring/colors.dart';
+import 'package:subscription_monitoring/models/Subscription.dart';
 
 class SubscriptionHeader extends StatelessWidget {
-  final String imageSrc;
+  final Subscription subscription;
   final double imageSize;
-  final String title;
-  final DateTime? date;
+  final bool isShowDate;
 
   const SubscriptionHeader({
     Key? key,
-    required this.imageSrc,
-    required this.title,
+    required this.subscription,
     this.imageSize = 70,
-    this.date,
+    this.isShowDate = false,
   }) : super(key: key);
 
   @override
@@ -24,7 +23,7 @@ class SubscriptionHeader extends StatelessWidget {
         const SizedBox(width: 10),
         Expanded(child: _buildTitle()),
         const SizedBox(width: 10),
-        if (date != null) _buildDate(),
+        if (isShowDate) _buildDate(),
       ],
     );
   }
@@ -33,7 +32,7 @@ class SubscriptionHeader extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: Image.network(
-        imageSrc,
+        subscription.imageSrc,
         width: imageSize,
         height: imageSize,
         fit: BoxFit.fill,
@@ -43,7 +42,7 @@ class SubscriptionHeader extends StatelessWidget {
 
   Text _buildTitle() {
     return Text(
-      title,
+      subscription.title,
       overflow: TextOverflow.ellipsis,
       style: const TextStyle(
         fontSize: 23,
@@ -62,7 +61,7 @@ class SubscriptionHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        '${format.format(date!)}',
+        '${format.format(subscription.endDate)}',
         style: const TextStyle(
           fontSize: 16,
           color: primaryColor,
