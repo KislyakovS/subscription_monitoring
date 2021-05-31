@@ -13,5 +13,6 @@ AppBarTheme appBarTheme() {
     elevation: 0,
     backgroundColor: defaultBackground,
     brightness: Brightness.light,
+    iconTheme: IconThemeData(color: Colors.black),
   );
 }
