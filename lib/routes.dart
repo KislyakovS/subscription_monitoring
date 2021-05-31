@@ -6,7 +6,7 @@ import 'screens/home_screen/home_screen.dart';
 import 'screens/list_subscription_screen/list_subscription_screen.dart';
 import 'screens/settings_screen/settings_screen.dart';
 import 'screens/statistics_screen/statistics_screen.dart';
-import 'screens/subscription_screen/subscription_screen.dart';
+import 'screens/subscription_details_screen/subscription_details_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
   ButtomNavigationScreen.routeName: (context) => ButtomNavigationScreen(),
@@ -15,5 +15,5 @@ final Map<String, WidgetBuilder> routes = {
   StatisticsScreen.routeName: (context) => StatisticsScreen(),
   SettingsScreen.routeName: (context) => SettingsScreen(),
   ListSubscriptionScreen.routeName: (context) => ListSubscriptionScreen(),
-  SubscriptionScreen.routeName: (context) => SubscriptionScreen(),
+  SubscriptionDetailsScreen.routeName: (context) => SubscriptionDetailsScreen(),
 };
