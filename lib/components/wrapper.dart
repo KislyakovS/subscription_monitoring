@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:subscription_monitoring/colors.dart';
 
 class Wrapper extends StatelessWidget {
   final Widget child;
   final double padding;
   final double borderRadius;
+  final String? title;
+  final String? buttonText;
+  final void Function()? press;
 
   const Wrapper({
     Key? key,
     required this.child,
     this.padding = 20,
     this.borderRadius = 20,
+    this.title,
+    this.buttonText,
+    this.press,
   }) : super(key: key);
 
   @override
@@ -28,7 +35,36 @@ class Wrapper extends StatelessWidget {
           )
         ],
       ),
-      child: child,
+      child: Column(
+        children: [
+          if (title != null || buttonText != null) _buildContainerHeader(),
+          child
+        ],
+      ),
     );
+  }
+
+  Row _buildContainerHeader() {
+    return Row(children: [
+      if (title != null)
+        Text(
+          title!,
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+        ),
+      const Spacer(),
+      if (buttonText != null)
+        TextButton(
+          onPressed: press,
+          style: ButtonStyle(
+            overlayColor: MaterialStateProperty.all<Color>(
+              primaryColor.withOpacity(0.4),
+            ),
+          ),
+          child: Text(
+            buttonText!,
+            style: const TextStyle(color: primaryColor, fontSize: 16),
+          ),
+        )
+    ]);
   }
 }
