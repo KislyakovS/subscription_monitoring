@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/colors.dart';
 import 'package:subscription_monitoring/components/chart_bar.dart';
 import 'package:subscription_monitoring/components/subscription_header.dart';
 import 'package:subscription_monitoring/components/wrapper.dart';

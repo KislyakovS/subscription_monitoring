@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/subscription_card.dart';
 import 'package:subscription_monitoring/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
+import 'package:subscription_monitoring/screens/subscription_details_screen/subscription_details_screen.dart';
 
 class Body extends StatelessWidget {
+  void _onTapSubscriptionCard(BuildContext context, Subscription subscription) {
+    Navigator.pushNamed(context, SubscriptionDetailsScreen.routeName,
+        arguments: SubscriptionDetailsArguments(subscription: subscription));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +21,10 @@ class Body extends StatelessWidget {
           }
 
           return SubscriptionCard(
-              subscription: demoSubscriptions[index], press: () {});
+            subscription: demoSubscriptions[index],
+            press: () =>
+                _onTapSubscriptionCard(context, demoSubscriptions[index]),
+          );
         },
         separatorBuilder: (context, _) => const SizedBox(height: 20),
         itemCount: demoSubscriptions.length + 1,
