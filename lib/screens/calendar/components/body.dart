@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
-import 'package:subscription_monitoring/screens/calendar_screen/components/list_subscription.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../components/event_calendare.dart';
+import 'list_subscription.dart';
 
 class Body extends StatefulWidget {
   @override

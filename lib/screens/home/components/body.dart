@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/subscription_card.dart';
 import 'package:subscription_monitoring/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
-import 'package:subscription_monitoring/screens/subscription_details_screen/subscription_details_screen.dart';
+import 'package:subscription_monitoring/screens/subscription_details/subscription_details_screen.dart';
 
 class Body extends StatelessWidget {
   void _onTapSubscriptionCard(BuildContext context, Subscription subscription) {

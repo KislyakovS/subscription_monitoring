@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/wrapper.dart';
 import 'package:subscription_monitoring/constants.dart';
-import 'package:subscription_monitoring/screens/statistics_screen/components/info.dart';
 
 import '../../../components/chart_bar.dart';
 import '../../../components/chart_pie.dart';
+import 'info.dart';
 
 class Body extends StatelessWidget {
   @override
