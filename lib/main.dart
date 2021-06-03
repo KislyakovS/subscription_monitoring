@@ -4,7 +4,7 @@ import 'package:subscription_monitoring/colors.dart';
 import 'package:subscription_monitoring/theme.dart';
 
 import 'routes.dart';
-import 'screens/bottom_navigation/bottom_navigation_screen.dart';
+import 'screens/screens.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

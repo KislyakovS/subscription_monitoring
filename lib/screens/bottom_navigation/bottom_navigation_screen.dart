@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/screens/calendar/calendar_screen.dart';
-import 'package:subscription_monitoring/screens/home/home_screen.dart';
-import 'package:subscription_monitoring/screens/list_subscription/list_subscription_screen.dart';
-import 'package:subscription_monitoring/screens/settings/settings_screen.dart';
-import 'package:subscription_monitoring/screens/statistics/statistics_screen.dart';
 
 import '../../colors.dart';
+import '../screens.dart';
 
 class ButtomNavigationScreen extends StatefulWidget {
   static String routeName = 'buttom_navigation';

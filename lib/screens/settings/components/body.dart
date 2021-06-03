@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/constants.dart';
-import 'package:subscription_monitoring/screens/settings/components/settings_list.dart';
+
+import './settings_list.dart';
 
 class Body extends StatelessWidget {
   @override

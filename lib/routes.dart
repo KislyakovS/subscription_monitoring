@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/bottom_navigation/bottom_navigation_screen.dart';
-import 'screens/calendar/calendar_screen.dart';
-import 'screens/home/home_screen.dart';
-import 'screens/list_subscription/list_subscription_screen.dart';
-import 'screens/settings/settings_screen.dart';
-import 'screens/statistics/statistics_screen.dart';
-import 'screens/subscription_details/subscription_details_screen.dart';
+import 'screens/screens.dart';
 
 final Map<String, WidgetBuilder> routes = {
   ButtomNavigationScreen.routeName: (context) => ButtomNavigationScreen(),
