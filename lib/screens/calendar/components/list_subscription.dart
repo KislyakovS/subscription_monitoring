@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:subscription_monitoring/components/subscription_header.dart';
-import 'package:subscription_monitoring/components/wrapper.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
+
+import '../../../components/components.dart';
 
 class ListSubscription extends StatelessWidget {
   final List<Subscription> subscriptions;

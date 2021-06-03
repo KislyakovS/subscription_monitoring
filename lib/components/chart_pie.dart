@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'indicator.dart';
+
+import './components.dart';
 
 class ChartPie extends StatefulWidget {
   @override

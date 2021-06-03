@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/wrapper.dart';
 import 'package:subscription_monitoring/constants.dart';
 
-import '../../../components/chart_bar.dart';
-import '../../../components/chart_pie.dart';
+import '../../../components/components.dart';
 import 'info.dart';
 
 class Body extends StatelessWidget {

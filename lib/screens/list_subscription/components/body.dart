@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/components/bouncing_button.dart';
-import 'package:subscription_monitoring/components/subscription_header.dart';
-import 'package:subscription_monitoring/components/wrapper.dart';
 import 'package:subscription_monitoring/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
+
+import '../../../components/components.dart';
 
 class Body extends StatelessWidget {
   @override

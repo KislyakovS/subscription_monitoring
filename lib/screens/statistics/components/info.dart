@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/components/wrapper.dart';
+
+import '../../../components/components.dart';
 
 class Info extends StatelessWidget {
   @override

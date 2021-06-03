@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/components/wrapper.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import './components.dart';
 
 class EventCalendare<T> extends StatefulWidget {
   final DateTime selectedDay;

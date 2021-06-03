@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/components/subscription_card.dart';
 import 'package:subscription_monitoring/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 
+import '../../../components/components.dart';
 import '../../screens.dart';
 
 class Body extends StatelessWidget {

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/colors.dart';
-import 'package:subscription_monitoring/components/bouncing_button.dart';
-import 'package:subscription_monitoring/components/line_percent.dart';
-import 'package:subscription_monitoring/components/subscription_header.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
+
+import './components.dart';
 
 class SubscriptionCard extends StatelessWidget {
   final Subscription subscription;
