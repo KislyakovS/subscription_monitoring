@@ -15,21 +15,22 @@ class SettingsList extends StatelessWidget {
               onChanged: (_) {},
             ),
           ),
-          Divider(),
+          const Divider(),
           _buildRow(
             'Notification time',
-            Text(
+            const Text(
               '10:10',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
           ),
-          Divider(),
+          const Divider(),
           _buildRow(
-              'Default currency',
-              Text(
-                'USD (\$)',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              )),
+            'Default currency',
+            const Text(
+              'USD (\$)',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+          ),
         ],
       ),
     );

@@ -52,9 +52,9 @@ class SubscriptionCard extends StatelessWidget {
         text: '\$ ${subscription.price}',
         style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
         children: [
-          TextSpan(
+          const TextSpan(
             text: '/month',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w400,
             ),

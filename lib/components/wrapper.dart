@@ -49,7 +49,7 @@ class Wrapper extends StatelessWidget {
       if (title != null)
         Text(
           title!,
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
         ),
       const Spacer(),
       if (buttonText != null)

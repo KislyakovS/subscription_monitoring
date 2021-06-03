@@ -34,7 +34,7 @@ class ChartBarState extends State<ChartBar> {
                 ) {
                   return BarTooltipItem(
                     rod.y.round().toString(),
-                    TextStyle(
+                    const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),

@@ -9,9 +9,9 @@ class Info extends StatelessWidget {
       child: Column(
         children: [
           _buildRow('All subscriptions', '4'),
-          Divider(),
+          const Divider(),
           _buildRow('Total', '\$ 499'),
-          Divider(),
+          const Divider(),
           _buildRow('Most expensive \'Netflix\'', '\$ 12.99'),
         ],
       ),
