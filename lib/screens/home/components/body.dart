@@ -10,7 +10,6 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: defaultPaddingScreen),
-      //child: _buildList(),
       child: demoSubscriptions.isEmpty
           ? const EmptyMessage()
           : ListSubscription(subscriptions: demoSubscriptions),
