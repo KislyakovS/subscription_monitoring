@@ -12,6 +12,7 @@ AppBarTheme appBarTheme() {
   return const AppBarTheme(
     elevation: 0,
     backgroundColor: defaultBackground,
+    centerTitle: true,
     brightness: Brightness.light,
     iconTheme: IconThemeData(color: Colors.black),
   );

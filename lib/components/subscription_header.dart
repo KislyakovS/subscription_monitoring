@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:subscription_monitoring/colors.dart';
+import 'package:subscription_monitoring/components/container_image.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
+import 'package:subscription_monitoring/utils/utils.dart';
 
 class SubscriptionHeader extends StatelessWidget {
   final Subscription subscription;
@@ -21,24 +22,16 @@ class SubscriptionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _buildIamge(),
+        ContainerImage(
+          src: subscription.imageSrc,
+          size: imageSize,
+          borderRadius: borderRadius,
+        ),
         const SizedBox(width: 10),
         Expanded(child: _buildTitle()),
         const SizedBox(width: 10),
         if (isShowDate) _buildDate(),
       ],
-    );
-  }
-
-  ClipRRect _buildIamge() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: Image.network(
-        subscription.imageSrc,
-        width: imageSize,
-        height: imageSize,
-        fit: BoxFit.fill,
-      ),
     );
   }
 
@@ -54,8 +47,6 @@ class SubscriptionHeader extends StatelessWidget {
   }
 
   Container _buildDate() {
-    final format = DateFormat('d MMMM');
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
@@ -63,7 +54,7 @@ class SubscriptionHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        '${format.format(subscription.endDate)}',
+        '${Utils.formatDate(time: subscription.endDate)}',
         style: const TextStyle(
           fontSize: 16,
           color: primaryColor,
