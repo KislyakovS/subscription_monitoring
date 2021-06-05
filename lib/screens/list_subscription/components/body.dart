@@ -3,8 +3,17 @@ import 'package:subscription_monitoring/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 
 import '../../../components/components.dart';
+import '../../screens.dart';
 
 class Body extends StatelessWidget {
+  void _onTapSubscription(BuildContext context, Subscription subscription) {
+    Navigator.pushNamed(
+      context,
+      FormScreen.routeName,
+      arguments: FormArguments(subscription: subscription),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,7 +25,7 @@ class Body extends StatelessWidget {
           }
 
           return BouncingButton(
-            press: () {},
+            press: () => _onTapSubscription(context, demoSubscriptions[index]),
             child: Wrapper(
               padding: 15,
               child: SubscriptionHeader(
