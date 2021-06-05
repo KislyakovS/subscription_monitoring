@@ -8,11 +8,8 @@ import 'screens/screens.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    //Lets make the Status Bar Transparent
     statusBarColor: Colors.transparent,
     systemNavigationBarColor: defaultBackground,
-
-    //Lets make the status bar icon brightness to bright
     statusBarIconBrightness: Brightness.light,
     systemNavigationBarIconBrightness: Brightness.dark,
   ));
