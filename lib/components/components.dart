@@ -8,3 +8,4 @@ export 'platform_switch.dart';
 export 'subscription_card.dart';
 export 'subscription_header.dart';
 export 'wrapper.dart';
+export 'button_text.dart';
