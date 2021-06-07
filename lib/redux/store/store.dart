@@ -1,7 +1,7 @@
 import 'package:subscription_monitoring/models/models.dart';
 
-class AppStore {
+class AppState {
   final List<Subscription> subscriptions;
 
-  AppStore({required this.subscriptions});
+  AppState({required this.subscriptions});
 }
