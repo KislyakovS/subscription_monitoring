@@ -18,18 +18,17 @@ class ListSubscription extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) {
-        if (index == demoSubscriptions.length) {
+        if (index == subscriptions.length) {
           return const SizedBox(height: 10);
         }
 
         return SubscriptionCard(
-          subscription: demoSubscriptions[index],
-          press: () =>
-              _onTapSubscriptionCard(context, demoSubscriptions[index]),
+          subscription: subscriptions[index],
+          press: () => _onTapSubscriptionCard(context, subscriptions[index]),
         );
       },
       separatorBuilder: (context, _) => const SizedBox(height: 20),
-      itemCount: demoSubscriptions.length + 1,
+      itemCount: subscriptions.length + 1,
     );
   }
 }
