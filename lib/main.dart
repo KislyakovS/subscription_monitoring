@@ -12,5 +12,5 @@ void main() {
     systemNavigationBarIconBrightness: Brightness.dark,
   ));
 
-  runApp(const App());
+  runApp(App());
 }
