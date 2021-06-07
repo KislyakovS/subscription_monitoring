@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:subscription_monitoring/components/components.dart';
+import 'package:subscription_monitoring/redux/actions/subscriptions_actions.dart';
+import 'package:subscription_monitoring/redux/store/store.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 import 'package:subscription_monitoring/screens/screens.dart';
 
-import '../../../components/components.dart';
 import 'buttons.dart';
 import 'chart.dart';
 import 'history.dart';
@@ -21,7 +24,12 @@ class Body extends StatelessWidget {
     );
   }
 
-  void _onTapRemove() {}
+  void _onTapRemove(BuildContext context) {
+    final store = StoreProvider.of<AppState>(context);
+
+    store.dispatch(RemoveSubscription(id: subscription.id));
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +45,7 @@ class Body extends StatelessWidget {
             const SizedBox(height: 10),
             Buttons(
               onTapEdit: () => _onTapEdit(context),
-              onTapRemove: _onTapRemove,
+              onTapRemove: () => _onTapRemove(context),
             ),
             const SizedBox(height: 10),
             const Chart(),
