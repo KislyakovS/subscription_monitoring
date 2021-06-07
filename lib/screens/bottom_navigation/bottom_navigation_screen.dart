@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
+import '../../theme/colors.dart';
 import '../screens.dart';
 
 class ButtomNavigationScreen extends StatefulWidget {

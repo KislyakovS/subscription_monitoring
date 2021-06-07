@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:subscription_monitoring/colors.dart';
-import 'package:subscription_monitoring/theme.dart';
+import 'package:subscription_monitoring/theme/colors.dart';
+import 'package:subscription_monitoring/theme/theme.dart';
 
 import 'routes.dart';
 import 'screens/screens.dart';

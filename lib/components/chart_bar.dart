@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/colors.dart';
+import 'package:subscription_monitoring/theme/colors.dart';
 
 class ChartBar extends StatefulWidget {
   @override

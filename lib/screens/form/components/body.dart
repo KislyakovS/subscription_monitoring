@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/container_image.dart';
 import 'package:subscription_monitoring/components/wrapper.dart';
-import 'package:subscription_monitoring/constants.dart';
+import 'package:subscription_monitoring/theme/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 import 'package:subscription_monitoring/utils/utils.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/colors.dart';
+import 'package:subscription_monitoring/theme/colors.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 
 import './components.dart';

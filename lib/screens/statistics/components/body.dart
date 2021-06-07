@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/wrapper.dart';
-import 'package:subscription_monitoring/constants.dart';
+import 'package:subscription_monitoring/theme/constants.dart';
 
 import '../../../components/components.dart';
 import 'info.dart';

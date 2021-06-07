@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/constants.dart';
+import 'package:subscription_monitoring/theme/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 import 'package:table_calendar/table_calendar.dart';
 
