@@ -1,4 +1,4 @@
-import 'package:subscription_monitoring/models/models.dart';
+import 'package:subscription_monitoring/models/Subscription.dart';
 
 class AppState {
   final List<Subscription> subscriptions;
