@@ -11,3 +11,10 @@ class AddSubscription {
 
   AddSubscription({required this.subscription});
 }
+
+class UpdateSubscription {
+  final int id;
+  final Subscription subscription;
+
+  UpdateSubscription({required this.id, required this.subscription});
+}
