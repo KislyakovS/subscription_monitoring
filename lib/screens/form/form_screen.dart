@@ -16,6 +16,8 @@ class FormScreen extends StatelessWidget {
   final priceController = TextEditingController();
 
   void _onTapSave(BuildContext context) {
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as FormArguments;
     final store = StoreProvider.of<AppState>(context);
 
     var subscription = Subscription(
@@ -29,7 +31,15 @@ class FormScreen extends StatelessWidget {
       startDate: DateTime.now(),
     );
 
-    store.dispatch(AddSubscription(subscription: subscription));
+    if (arguments.isUpdate) {
+      store.dispatch(UpdateSubscription(
+        id: arguments.subscription.id,
+        subscription: subscription,
+      ));
+    } else {
+      store.dispatch(AddSubscription(subscription: subscription));
+    }
+
     Navigator.pushNamedAndRemoveUntil(
         context, ButtomNavigationScreen.routeName, (route) => false);
   }
@@ -51,9 +61,9 @@ class FormScreen extends StatelessWidget {
               overlayColor: MaterialStateProperty.all(Colors.transparent),
             ),
             onPressed: () => _onTapSave(context),
-            child: const Text(
-              'Save',
-              style: TextStyle(color: Colors.black, fontSize: 20),
+            child: Text(
+              arguments.isUpdate ? 'Update' : 'Save',
+              style: const TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
           const SizedBox(width: 10)
@@ -70,6 +80,7 @@ class FormScreen extends StatelessWidget {
 
 class FormArguments {
   final Subscription subscription;
+  final bool isUpdate;
 
-  FormArguments({required this.subscription});
+  FormArguments({required this.subscription, this.isUpdate = false});
 }

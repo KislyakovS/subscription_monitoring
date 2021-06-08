@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
     Navigator.pushNamed(
       context,
       FormScreen.routeName,
-      arguments: FormArguments(subscription: subscription),
+      arguments: FormArguments(subscription: subscription, isUpdate: true),
     );
   }
 

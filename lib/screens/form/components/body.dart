@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/components/container_image.dart';
-import 'package:subscription_monitoring/components/wrapper.dart';
+import 'package:subscription_monitoring/components/components.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
-import 'package:subscription_monitoring/utils/utils.dart';
+
+import '../data.dart';
 
 class Body extends StatefulWidget {
   const Body({
@@ -51,44 +51,64 @@ class _BodyState extends State<Body> {
                   const SizedBox(height: 40),
                   _buildRow(
                     'Title',
-                    CupertinoTextField(
-                      placeholder: 'Subscription name',
-                      controller: widget.titleController,
-                      textAlign: TextAlign.right,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.transparent),
+                    Expanded(
+                      child: CupertinoTextField(
+                        placeholder: 'Subscription name',
+                        controller: widget.titleController,
+                        textAlign: TextAlign.right,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.transparent),
+                        ),
                       ),
                     ),
                   ),
                   const Divider(),
                   _buildRow(
                     'Price',
-                    CupertinoTextField(
-                      placeholder: '9.99',
-                      controller: widget.priceController,
-                      textAlign: TextAlign.right,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.transparent),
+                    Expanded(
+                      child: CupertinoTextField(
+                        placeholder: '9.99',
+                        controller: widget.priceController,
+                        textAlign: TextAlign.right,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.transparent),
+                        ),
                       ),
                     ),
                   ),
                   const Divider(),
-                  _buildRow('Currency', Text('USD (\$)')),
+                  _buildRow(
+                    'Currency',
+                    PlatformDropdown(
+                      items: currencies.entries.map((e) => e.value).toList(),
+                      onChanged: (value) {
+                        print(value);
+                      },
+                    ),
+                  ),
                   const Divider(),
                   _buildRow('Period', Text('1 month')),
                   const Divider(),
                   _buildRow(
                     'Payment Date',
-                    Text(
-                      Utils.formatDate(
-                        time: widget.subscription.initDate,
-                      ),
+                    PlatformDatePicker(
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2021, 1, 1),
+                      lastDate: DateTime(2022, 1, 1),
+                      onChangedDate: (date) {
+                        print(date);
+                      },
                     ),
                   ),
                   const Divider(),
                   _buildRow(
                     'Notify me',
-                    Text('Yes'),
+                    PlatformDropdown(
+                      items: notifications.entries.map((e) => e.value).toList(),
+                      onChanged: (value) {
+                        print(value);
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -115,11 +135,44 @@ class _BodyState extends State<Body> {
             ),
           ),
           const SizedBox(width: 10),
-          Expanded(
-            child: trailing,
-          )
+          trailing,
         ],
       ),
+    );
+  }
+
+  // static Route<void> _modalBuilder(BuildContext context, Object? arguments) {
+  //   return CupertinoModalPopupRoute<void>(
+  //     builder: (BuildContext context) {
+  //       return CupertinoActionSheet(
+  //         title: const Text('Title'),
+  //         message: const Text('Message'),
+  //         actions: <CupertinoActionSheetAction>[
+  //           CupertinoActionSheetAction(
+  //             child: const Text('Action One'),
+  //             onPressed: () {
+  //               Navigator.pop(context);
+  //             },
+  //           ),
+  //           CupertinoActionSheetAction(
+  //             child: const Text('Action Two'),
+  //             onPressed: () {
+  //               Navigator.pop(context);
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+
+  static Route<void> _modalBuilder(BuildContext context, Object? arguments) {
+    return CupertinoModalPopupRoute<void>(
+      builder: (BuildContext context) {
+        return CupertinoDatePicker(
+          onDateTimeChanged: (DateTime value) {},
+        );
+      },
     );
   }
 }
