@@ -1,22 +1,35 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:subscription_monitoring/utils/utils.dart';
 
-class PlatformDatePicker extends StatelessWidget {
+class PlatformDatePicker extends StatefulWidget {
   PlatformDatePicker({
     Key? key,
-    required this.child,
     required this.initialDate,
     required this.firstDate,
     required this.lastDate,
     required this.onChangedDate,
   }) : super(key: key);
 
-  final Widget child;
   final DateTime initialDate;
   final DateTime firstDate;
   final DateTime lastDate;
-  final void Function(DateTime?) onChangedDate;
+  final void Function(DateTime) onChangedDate;
+
+  @override
+  _PlatformDatePickerState createState() => _PlatformDatePickerState();
+}
+
+class _PlatformDatePickerState extends State<PlatformDatePicker> {
+  late String value;
+
+  @override
+  void initState() {
+    super.initState();
+
+    value = Utils.formatDate(time: widget.initialDate);
+  }
 
   void _onTapShowCupertino(BuildContext context) {
     showCupertinoModalPopup<CupertinoDatePicker>(
@@ -26,10 +39,15 @@ class PlatformDatePicker extends StatelessWidget {
         color: Colors.white,
         child: CupertinoDatePicker(
           mode: CupertinoDatePickerMode.date,
-          initialDateTime: initialDate,
-          minimumDate: firstDate,
-          maximumDate: lastDate,
-          onDateTimeChanged: onChangedDate,
+          initialDateTime: widget.initialDate,
+          minimumDate: widget.firstDate,
+          maximumDate: widget.lastDate,
+          onDateTimeChanged: (date) {
+            setState(() {
+              value = Utils.formatDate(time: date);
+            });
+            widget.onChangedDate(date);
+          },
         ),
       ),
     );
@@ -38,12 +56,18 @@ class PlatformDatePicker extends StatelessWidget {
   void _onTapShowAndroid(BuildContext context) async {
     final date = await showDatePicker(
       context: context,
-      initialDate: initialDate,
-      firstDate: firstDate,
-      lastDate: lastDate,
+      initialDate: widget.initialDate,
+      firstDate: widget.firstDate,
+      lastDate: widget.lastDate,
     );
 
-    onChangedDate(date);
+    if (date != null) {
+      setState(() {
+        value = Utils.formatDate(time: date);
+      });
+
+      widget.onChangedDate(date);
+    }
   }
 
   @override
@@ -53,7 +77,7 @@ class PlatformDatePicker extends StatelessWidget {
         onTap: () => Platform.isAndroid
             ? _onTapShowAndroid(context)
             : _onTapShowCupertino(context),
-        child: child,
+        child: Text(value),
       ),
     );
   }
