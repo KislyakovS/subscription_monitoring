@@ -13,7 +13,7 @@ class PlatformDropdown extends StatefulWidget {
 
   final int initialIndex;
   final List<String> items;
-  final void Function(String?) onChanged;
+  final void Function(int) onChanged;
   final TextStyle style;
 
   @override
@@ -50,7 +50,7 @@ class _PlatformDropdownState extends State<PlatformDropdown> {
           onSelectedItemChanged: (int index) {
             setState(() {
               value = widget.items[index];
-              widget.onChanged(value);
+              widget.onChanged(index);
             });
           },
           children: widget.items
@@ -69,7 +69,9 @@ class _PlatformDropdownState extends State<PlatformDropdown> {
     return DropdownButton<String>(
       value: widget.items[widget.initialIndex],
       onChanged: (value) {
-        widget.onChanged(value);
+        if (value != null) {
+          widget.onChanged(widget.items.indexOf(value));
+        }
       },
       items: widget.items
           .map(
