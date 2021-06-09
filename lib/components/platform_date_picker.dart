@@ -10,12 +10,14 @@ class PlatformDatePicker extends StatefulWidget {
     required this.firstDate,
     required this.lastDate,
     required this.onChangedDate,
+    this.style = const TextStyle(),
   }) : super(key: key);
 
   final DateTime initialDate;
   final DateTime firstDate;
   final DateTime lastDate;
   final void Function(DateTime) onChangedDate;
+  final TextStyle style;
 
   @override
   _PlatformDatePickerState createState() => _PlatformDatePickerState();
@@ -77,7 +79,7 @@ class _PlatformDatePickerState extends State<PlatformDatePicker> {
         onTap: () => Platform.isAndroid
             ? _onTapShowAndroid(context)
             : _onTapShowCupertino(context),
-        child: Text(value),
+        child: Text(value, style: widget.style),
       ),
     );
   }

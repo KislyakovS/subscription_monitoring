@@ -8,11 +8,13 @@ class PlatformDropdown extends StatefulWidget {
     required this.items,
     this.initialIndex = 0,
     required this.onChanged,
+    this.style = const TextStyle(),
   }) : super(key: key);
 
   final int initialIndex;
   final List<String> items;
   final void Function(String?) onChanged;
+  final TextStyle style;
 
   @override
   _PlatformDropdownState createState() => _PlatformDropdownState();
@@ -83,7 +85,7 @@ class _PlatformDropdownState extends State<PlatformDropdown> {
   GestureDetector _buildCupertinoDropdown(BuildContext context) {
     return GestureDetector(
       onTap: () => _onTapShowPicker(context),
-      child: Text(value),
+      child: Text(value, style: widget.style),
     );
   }
 }
