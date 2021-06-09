@@ -9,26 +9,38 @@ import '../data.dart';
 class Body extends StatefulWidget {
   const Body({
     Key? key,
-    required this.titleController,
-    required this.priceController,
     required this.subscription,
   }) : super(key: key);
 
   final Subscription subscription;
-  final TextEditingController titleController;
-  final TextEditingController priceController;
 
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
+  TextStyle style = const TextStyle(fontSize: 16);
+
+  late final TextEditingController title;
+  late final TextEditingController price;
+  late int currencie;
+  late int notification;
+
   @override
   void initState() {
     super.initState();
 
-    widget.titleController.text = widget.subscription.title;
-    widget.priceController.text = widget.subscription.price.toString();
+    title = TextEditingController(text: widget.subscription.title);
+    price = TextEditingController(text: widget.subscription.price.toString());
+    currencie = 0;
+    notification = 0;
+  }
+
+  void _onTapSubmit() {
+    print(title.text);
+    print(price.text);
+    print(currencie);
+    print(notification);
   }
 
   @override
@@ -44,17 +56,18 @@ class _BodyState extends State<Body> {
                   Align(
                     child: ContainerImage(
                       src: widget.subscription.imageSrc,
-                      size: 150,
+                      size: 140,
                       borderRadius: 20,
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   _buildRow(
                     'Title',
                     Expanded(
                       child: CupertinoTextField(
                         placeholder: 'Subscription name',
-                        controller: widget.titleController,
+                        controller: title,
+                        style: style,
                         textAlign: TextAlign.right,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.transparent),
@@ -68,7 +81,9 @@ class _BodyState extends State<Body> {
                     Expanded(
                       child: CupertinoTextField(
                         placeholder: '9.99',
-                        controller: widget.priceController,
+                        keyboardType: TextInputType.number,
+                        controller: price,
+                        style: style,
                         textAlign: TextAlign.right,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.transparent),
@@ -80,14 +95,24 @@ class _BodyState extends State<Body> {
                   _buildRow(
                     'Currency',
                     PlatformDropdown(
+                      initialIndex: currencie,
                       items: currencies.entries.map((e) => e.value).toList(),
-                      onChanged: (value) {
-                        print(value);
+                      style: style,
+                      onChanged: (index) {
+                        setState(() {
+                          currencie = index;
+                        });
                       },
                     ),
                   ),
                   const Divider(),
-                  _buildRow('Period', Text('1 month')),
+                  _buildRow(
+                    'Period',
+                    Text(
+                      '1 month',
+                      style: style,
+                    ),
+                  ),
                   const Divider(),
                   _buildRow(
                     'Payment Date',
@@ -95,6 +120,7 @@ class _BodyState extends State<Body> {
                       initialDate: DateTime.now(),
                       firstDate: DateTime(2021, 1, 1),
                       lastDate: DateTime(2022, 1, 1),
+                      style: style,
                       onChangedDate: (date) {
                         print(date);
                       },
@@ -104,13 +130,25 @@ class _BodyState extends State<Body> {
                   _buildRow(
                     'Notify me',
                     PlatformDropdown(
+                      initialIndex: notification,
                       items: notifications.entries.map((e) => e.value).toList(),
-                      onChanged: (value) {
-                        print(value);
+                      style: style,
+                      onChanged: (index) {
+                        setState(() {
+                          notification = index;
+                        });
                       },
                     ),
                   ),
                 ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            Container(
+              width: double.infinity,
+              child: ButtonText(
+                press: _onTapSubmit,
+                title: 'Save',
               ),
             ),
             const SizedBox(height: 20)
@@ -120,9 +158,9 @@ class _BodyState extends State<Body> {
     );
   }
 
-  Padding _buildRow(String label, Widget trailing) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+  SizedBox _buildRow(String label, Widget trailing) {
+    return SizedBox(
+      height: 30,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -138,41 +176,6 @@ class _BodyState extends State<Body> {
           trailing,
         ],
       ),
-    );
-  }
-
-  // static Route<void> _modalBuilder(BuildContext context, Object? arguments) {
-  //   return CupertinoModalPopupRoute<void>(
-  //     builder: (BuildContext context) {
-  //       return CupertinoActionSheet(
-  //         title: const Text('Title'),
-  //         message: const Text('Message'),
-  //         actions: <CupertinoActionSheetAction>[
-  //           CupertinoActionSheetAction(
-  //             child: const Text('Action One'),
-  //             onPressed: () {
-  //               Navigator.pop(context);
-  //             },
-  //           ),
-  //           CupertinoActionSheetAction(
-  //             child: const Text('Action Two'),
-  //             onPressed: () {
-  //               Navigator.pop(context);
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
-  static Route<void> _modalBuilder(BuildContext context, Object? arguments) {
-    return CupertinoModalPopupRoute<void>(
-      builder: (BuildContext context) {
-        return CupertinoDatePicker(
-          onDateTimeChanged: (DateTime value) {},
-        );
-      },
     );
   }
 }

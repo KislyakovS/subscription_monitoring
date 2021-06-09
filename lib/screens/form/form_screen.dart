@@ -7,13 +7,39 @@ import 'package:subscription_monitoring/screens/screens.dart';
 
 import 'components/body.dart';
 
-class FormScreen extends StatelessWidget {
+class FormScreen extends StatefulWidget {
   static String routeName = '/form';
 
   FormScreen({Key? key}) : super(key: key);
 
+  @override
+  _FormScreenState createState() => _FormScreenState();
+}
+
+class _FormScreenState extends State<FormScreen> {
   final titleController = TextEditingController();
   final priceController = TextEditingController();
+
+  int currencie = 0;
+  int notification = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration.zero, () {
+      final arguments =
+          ModalRoute.of(context)!.settings.arguments as FormArguments;
+
+      titleController.text = arguments.subscription.title;
+      priceController.text = arguments.subscription.price.toString();
+
+      setState(() {
+        currencie = 1;
+        notification = 1;
+      });
+    });
+  }
 
   void _onTapSave(BuildContext context) {
     final arguments =
@@ -55,24 +81,9 @@ class FormScreen extends StatelessWidget {
           arguments.subscription.title,
           style: const TextStyle(color: Colors.black),
         ),
-        actions: [
-          TextButton(
-            style: ButtonStyle(
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
-            ),
-            onPressed: () => _onTapSave(context),
-            child: Text(
-              arguments.isUpdate ? 'Update' : 'Save',
-              style: const TextStyle(color: Colors.black, fontSize: 20),
-            ),
-          ),
-          const SizedBox(width: 10)
-        ],
       ),
       body: Body(
         subscription: arguments.subscription,
-        titleController: titleController,
-        priceController: priceController,
       ),
     );
   }
