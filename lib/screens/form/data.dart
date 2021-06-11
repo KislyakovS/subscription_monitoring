@@ -1,12 +1,12 @@
 Map<int, String> currencies = {
-  1: 'USD (\$)',
-  2: 'RUB (₽)',
-  3: 'EUR (€)',
+  0: 'USD (\$)',
+  1: 'RUB (₽)',
+  2: 'EUR (€)',
 };
 
 Map<int, String> notifications = {
-  1: 'No',
-  2: 'On the same day',
-  3: 'For 1 day',
-  4: 'For 3 day',
+  0: 'No',
+  1: 'On the same day',
+  2: 'For 1 day',
+  3: 'For 3 day',
 };

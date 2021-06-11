@@ -21,7 +21,7 @@ List<Subscription> _addSubscription(
 List<Subscription> _updateSubscription(
     List<Subscription> subscriptions, UpdateSubscription action) {
   var newSubscriptions = [...subscriptions];
-  final indexSub = newSubscriptions.indexWhere((it) => it.id == action.id);
-  newSubscriptions.replaceRange(indexSub, 1, [action.subscription]);
+  final index = newSubscriptions.indexWhere((it) => it.id == action.id);
+  newSubscriptions[index] = action.subscription;
   return newSubscriptions;
 }

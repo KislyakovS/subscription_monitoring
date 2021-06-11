@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:subscription_monitoring/components/components.dart';
+import 'package:subscription_monitoring/redux/actions/subscriptions_actions.dart';
+import 'package:subscription_monitoring/redux/store/store.dart';
+import 'package:subscription_monitoring/screens/bottom_navigation/bottom_navigation_screen.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
 
@@ -10,9 +14,11 @@ class Body extends StatefulWidget {
   const Body({
     Key? key,
     required this.subscription,
+    required this.isUpdate,
   }) : super(key: key);
 
   final Subscription subscription;
+  final bool isUpdate;
 
   @override
   _BodyState createState() => _BodyState();
@@ -37,10 +43,27 @@ class _BodyState extends State<Body> {
   }
 
   void _onTapSubmit() {
-    print(title.text);
-    print(price.text);
-    print(currencie);
-    print(notification);
+    final store = StoreProvider.of<AppState>(context);
+
+    var subscription = Subscription(
+      id: 100,
+      imageSrc: widget.subscription.imageSrc,
+      title: title.text,
+      endDate: DateTime.now(),
+      initDate: DateTime.now(),
+      price: double.parse(price.text),
+      startDate: DateTime.now(),
+    );
+
+    if (widget.isUpdate) {
+      store.dispatch(UpdateSubscription(
+          id: widget.subscription.id, subscription: subscription));
+      Navigator.of(context).pop();
+    } else {
+      store.dispatch(AddSubscription(subscription: subscription));
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          ButtomNavigationScreen.routeName, (route) => false);
+    }
   }
 
   @override
@@ -148,7 +171,7 @@ class _BodyState extends State<Body> {
               width: double.infinity,
               child: ButtonText(
                 press: _onTapSubmit,
-                title: 'Save',
+                title: widget.isUpdate ? 'Update' : 'Save',
               ),
             ),
             const SizedBox(height: 20)
