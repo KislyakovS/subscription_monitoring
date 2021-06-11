@@ -65,19 +65,21 @@ class SubscriptionCard extends StatelessWidget {
   }
 
   Column _buildProgress() {
-    final remainedDat = subscription.endDate.difference(DateTime.now()).inDays;
+    final remainedDays = subscription.endDate.difference(DateTime.now()).inDays;
+    final allDays =
+        subscription.endDate.difference(subscription.startDate).inDays;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Payment in $remainedDat days'),
+        Text('Payment in $remainedDays days'),
         const SizedBox(height: 5),
         SizedBox(
           width: double.infinity,
           child: LinePercent(
             fillColor: primaryColor.withOpacity(0.7),
             lineColor: primaryColor,
-            procent: 0.8,
+            procent: (allDays - remainedDays) / allDays,
           ),
         )
       ],
