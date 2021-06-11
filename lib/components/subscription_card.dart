@@ -35,7 +35,11 @@ class SubscriptionCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SubscriptionHeader(subscription: subscription),
+            SubscriptionHeader(
+              title: subscription.title,
+              imageSrc: subscription.imageSrc,
+              date: subscription.endDate,
+            ),
             const SizedBox(height: 15),
             _buildProgress(),
             const SizedBox(height: 15),

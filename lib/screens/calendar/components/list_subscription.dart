@@ -37,8 +37,9 @@ class ListSubscription extends StatelessWidget {
           (subscription) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: SubscriptionHeader(
-              subscription: subscription,
-              isShowDate: true,
+              title: subscription.title,
+              imageSrc: subscription.imageSrc,
+              date: subscription.endDate,
             ),
           ),
         ),

@@ -39,8 +39,9 @@ class Body extends StatelessWidget {
         child: Column(
           children: [
             SubscriptionHeader(
-              subscription: subscription,
-              isShowDate: true,
+              title: subscription.title,
+              imageSrc: subscription.imageSrc,
+              date: subscription.endDate,
             ),
             const SizedBox(height: 10),
             Buttons(
@@ -50,8 +51,8 @@ class Body extends StatelessWidget {
             const SizedBox(height: 10),
             const Chart(),
             const SizedBox(height: 20),
-            History(subscription: subscription),
-            const SizedBox(height: 20),
+            // History(subscription: subscription),
+            // const SizedBox(height: 20),
           ],
         ),
       ),
