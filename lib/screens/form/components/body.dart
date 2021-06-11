@@ -1,14 +1,70 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/components/container_image.dart';
-import 'package:subscription_monitoring/components/wrapper.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:subscription_monitoring/components/components.dart';
+import 'package:subscription_monitoring/redux/actions/subscriptions_actions.dart';
+import 'package:subscription_monitoring/redux/store/store.dart';
+import 'package:subscription_monitoring/screens/bottom_navigation/bottom_navigation_screen.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
-import 'package:subscription_monitoring/utils/utils.dart';
 
-class Body extends StatelessWidget {
-  const Body({Key? key, required this.subscription}) : super(key: key);
+import '../data.dart';
+
+class Body extends StatefulWidget {
+  const Body({
+    Key? key,
+    required this.subscription,
+    required this.isUpdate,
+  }) : super(key: key);
 
   final Subscription subscription;
+  final bool isUpdate;
+
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  TextStyle style = const TextStyle(fontSize: 16);
+
+  late final TextEditingController title;
+  late final TextEditingController price;
+  late int currencie;
+  late int notification;
+
+  @override
+  void initState() {
+    super.initState();
+
+    title = TextEditingController(text: widget.subscription.title);
+    price = TextEditingController(text: widget.subscription.price.toString());
+    currencie = 0;
+    notification = 0;
+  }
+
+  void _onTapSubmit() {
+    final store = StoreProvider.of<AppState>(context);
+
+    var subscription = Subscription(
+      id: 100,
+      imageSrc: widget.subscription.imageSrc,
+      title: title.text,
+      endDate: DateTime.now(),
+      initDate: DateTime.now(),
+      price: double.parse(price.text),
+      startDate: DateTime.now(),
+    );
+
+    if (widget.isUpdate) {
+      store.dispatch(UpdateSubscription(
+          id: widget.subscription.id, subscription: subscription));
+      Navigator.of(context).pop();
+    } else {
+      store.dispatch(AddSubscription(subscription: subscription));
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          ButtomNavigationScreen.routeName, (route) => false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,34 +78,100 @@ class Body extends StatelessWidget {
                 children: [
                   Align(
                     child: ContainerImage(
-                      src: subscription.imageSrc,
-                      size: 150,
+                      src: widget.subscription.imageSrc,
+                      size: 140,
                       borderRadius: 20,
                     ),
                   ),
-                  const SizedBox(height: 40),
-                  _buildRow('Title', Text(subscription.title)),
-                  const Divider(),
-                  _buildRow('Price', Text(subscription.price.toString())),
-                  const Divider(),
-                  _buildRow('Currency', Text('USD (\$)')),
-                  const Divider(),
-                  _buildRow('Period', Text('1 month')),
-                  const Divider(),
+                  const SizedBox(height: 30),
                   _buildRow(
-                    'Payment Date',
-                    Text(
-                      Utils.formatDate(
-                        time: subscription.initDate,
+                    'Title',
+                    Expanded(
+                      child: CupertinoTextField(
+                        placeholder: 'Subscription name',
+                        controller: title,
+                        style: style,
+                        textAlign: TextAlign.right,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.transparent),
+                        ),
                       ),
                     ),
                   ),
                   const Divider(),
                   _buildRow(
+                    'Price',
+                    Expanded(
+                      child: CupertinoTextField(
+                        placeholder: '9.99',
+                        keyboardType: TextInputType.number,
+                        controller: price,
+                        style: style,
+                        textAlign: TextAlign.right,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.transparent),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Divider(),
+                  _buildRow(
+                    'Currency',
+                    PlatformDropdown(
+                      initialIndex: currencie,
+                      items: currencies.entries.map((e) => e.value).toList(),
+                      style: style,
+                      onChanged: (index) {
+                        setState(() {
+                          currencie = index;
+                        });
+                      },
+                    ),
+                  ),
+                  const Divider(),
+                  _buildRow(
+                    'Period',
+                    Text(
+                      '1 month',
+                      style: style,
+                    ),
+                  ),
+                  const Divider(),
+                  _buildRow(
+                    'Payment Date',
+                    PlatformDatePicker(
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2021, 1, 1),
+                      lastDate: DateTime(2022, 1, 1),
+                      style: style,
+                      onChangedDate: (date) {
+                        print(date);
+                      },
+                    ),
+                  ),
+                  const Divider(),
+                  _buildRow(
                     'Notify me',
-                    Text('Subscribe to TV series and movies'),
+                    PlatformDropdown(
+                      initialIndex: notification,
+                      items: notifications.entries.map((e) => e.value).toList(),
+                      style: style,
+                      onChanged: (index) {
+                        setState(() {
+                          notification = index;
+                        });
+                      },
+                    ),
                   ),
                 ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            Container(
+              width: double.infinity,
+              child: ButtonText(
+                press: _onTapSubmit,
+                title: widget.isUpdate ? 'Update' : 'Save',
               ),
             ),
             const SizedBox(height: 20)
@@ -59,10 +181,11 @@ class Body extends StatelessWidget {
     );
   }
 
-  Padding _buildRow(String label, Widget trailing) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+  SizedBox _buildRow(String label, Widget trailing) {
+    return SizedBox(
+      height: 30,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             label,
@@ -72,8 +195,8 @@ class Body extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          const Spacer(),
-          trailing
+          const SizedBox(width: 10),
+          trailing,
         ],
       ),
     );
