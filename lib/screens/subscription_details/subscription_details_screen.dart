@@ -4,6 +4,8 @@ import 'package:subscription_monitoring/models/Subscription.dart';
 import 'components/body.dart';
 
 class SubscriptionDetailsScreen extends StatelessWidget {
+  SubscriptionDetailsScreen({Key? key}) : super(key: key);
+
   static String routeName = '/subscription_details';
 
   @override

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'components/body.dart';
 
 class CalendarScreen extends StatelessWidget {
+  CalendarScreen({Key? key}) : super(key: key);
+
   static String routeName = '/calendar';
 
   @override

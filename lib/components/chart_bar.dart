@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/theme/colors.dart';
 
 class ChartBar extends StatefulWidget {
+  ChartBar({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => ChartBarState();
 }

@@ -8,6 +8,8 @@ import 'list_subscription.dart';
 import '../../../components/components.dart';
 
 class Body extends StatefulWidget {
+  Body({Key? key}) : super(key: key);
+
   @override
   _BodyState createState() => _BodyState();
 }

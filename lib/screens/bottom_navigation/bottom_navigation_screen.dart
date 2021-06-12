@@ -4,6 +4,8 @@ import '../../theme/colors.dart';
 import '../screens.dart';
 
 class ButtomNavigationScreen extends StatefulWidget {
+  ButtomNavigationScreen({Key? key}) : super(key: key);
+
   static String routeName = 'buttom_navigation';
 
   @override

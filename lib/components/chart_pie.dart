@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import './components.dart';
 
 class ChartPie extends StatefulWidget {
+  ChartPie({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => ChartPieState();
 }

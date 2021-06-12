@@ -4,6 +4,8 @@ import 'package:subscription_monitoring/theme/constants.dart';
 import './settings_list.dart';
 
 class Body extends StatelessWidget {
+  Body({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(

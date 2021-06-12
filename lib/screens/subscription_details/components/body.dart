@@ -9,7 +9,6 @@ import 'package:subscription_monitoring/screens/screens.dart';
 
 import 'buttons.dart';
 import 'chart.dart';
-import 'history.dart';
 
 class Body extends StatelessWidget {
   final Subscription subscription;

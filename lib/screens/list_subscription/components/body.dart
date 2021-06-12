@@ -6,6 +6,8 @@ import '../../../components/components.dart';
 import '../../screens.dart';
 
 class Body extends StatelessWidget {
+  Body({Key? key}) : super(key: key);
+
   void _onTapSubscription(BuildContext context, Template? template) {
     Navigator.pushNamed(context, FormScreen.routeName,
         arguments: FormArguments(template: template)
