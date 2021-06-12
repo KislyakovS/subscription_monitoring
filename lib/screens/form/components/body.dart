@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:subscription_monitoring/components/components.dart';
+import 'package:subscription_monitoring/models/Templates.dart';
 import 'package:subscription_monitoring/redux/actions/subscriptions_actions.dart';
 import 'package:subscription_monitoring/redux/store/store.dart';
 import 'package:subscription_monitoring/screens/bottom_navigation/bottom_navigation_screen.dart';
@@ -14,10 +15,12 @@ class Body extends StatefulWidget {
   const Body({
     Key? key,
     required this.subscription,
+    required this.template,
     required this.isUpdate,
   }) : super(key: key);
 
-  final Subscription subscription;
+  final Subscription? subscription;
+  final Template? template;
   final bool isUpdate;
 
   @override
@@ -29,6 +32,7 @@ class _BodyState extends State<Body> {
 
   late final TextEditingController title;
   late final TextEditingController price;
+  late String imageSrc;
   late int currencie;
   late int notification;
 
@@ -36,10 +40,20 @@ class _BodyState extends State<Body> {
   void initState() {
     super.initState();
 
-    title = TextEditingController(text: widget.subscription.title);
-    price = TextEditingController(text: widget.subscription.price.toString());
-    currencie = 0;
-    notification = 0;
+    if (widget.subscription != null) {
+      title = TextEditingController(text: widget.subscription!.title);
+      price =
+          TextEditingController(text: widget.subscription!.price.toString());
+      imageSrc = widget.subscription!.imageSrc;
+      currencie = 0;
+      notification = 0;
+    } else {
+      title = TextEditingController(text: widget.template!.title);
+      price = TextEditingController(text: '');
+      imageSrc = widget.template!.imageSrc;
+      currencie = 0;
+      notification = 0;
+    }
   }
 
   void _onTapSubmit() {
@@ -47,17 +61,17 @@ class _BodyState extends State<Body> {
 
     var subscription = Subscription(
       id: 100,
-      imageSrc: widget.subscription.imageSrc,
+      imageSrc: imageSrc,
       title: title.text,
+      startDate: DateTime.now(),
       endDate: DateTime.now(),
       initDate: DateTime.now(),
       price: double.parse(price.text),
-      startDate: DateTime.now(),
     );
 
     if (widget.isUpdate) {
       store.dispatch(UpdateSubscription(
-          id: widget.subscription.id, subscription: subscription));
+          id: widget.subscription!.id, subscription: subscription));
       Navigator.of(context).pop();
     } else {
       store.dispatch(AddSubscription(subscription: subscription));
@@ -78,7 +92,7 @@ class _BodyState extends State<Body> {
                 children: [
                   Align(
                     child: ContainerImage(
-                      src: widget.subscription.imageSrc,
+                      src: imageSrc,
                       size: 140,
                       borderRadius: 20,
                     ),

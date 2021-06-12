@@ -12,7 +12,7 @@ final demoTemplates = [
         'https://howchoo.com/media/md/li/nt/1password-logo.jpeg?width=1440&auto=webp',
   ),
   Template(
-    title: 'LstPass',
+    title: 'LastPass',
     imageSrc:
         'https://store-images.s-microsoft.com/image/apps.29024.9007199266246150.ee6886d3-2c6d-4f3d-8aa4-e4b2a89d8c9b.874ab8c4-cf50-4898-abbb-ad50653ccfab?mode=scale&q=90&h=200&w=200&background=%23222222',
   ),

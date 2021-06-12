@@ -6,12 +6,11 @@ import '../../../components/components.dart';
 import '../../screens.dart';
 
 class Body extends StatelessWidget {
-  void _onTapSubscription(BuildContext context, Template subscription) {
-    Navigator.pushNamed(
-      context,
-      FormScreen.routeName,
-      //arguments: FormArguments(subscription: subscription),
-    );
+  void _onTapSubscription(BuildContext context, Template? template) {
+    Navigator.pushNamed(context, FormScreen.routeName,
+        arguments: FormArguments(template: template)
+        //arguments: FormArguments(subscription: subscription),
+        );
   }
 
   @override
@@ -19,7 +18,23 @@ class Body extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: defaultPaddingScreen),
       child: ListView.separated(
-        itemBuilder: (context, index) {
+        itemBuilder: (context, i) {
+          if (i == 0) {
+            return BouncingButton(
+              press: () => _onTapSubscription(context, null),
+              child: const Wrapper(
+                padding: 15,
+                child: SubscriptionHeader(
+                  title: 'Add new subscription',
+                  imageSrc: 'https://i.dlpng.com/static/png/94951_preview.png',
+                  imageSize: 60,
+                ),
+              ),
+            );
+          }
+
+          final index = i - 1;
+
           if (index == demoTemplates.length) {
             return const SizedBox(height: 20);
           }
@@ -37,7 +52,7 @@ class Body extends StatelessWidget {
           );
         },
         separatorBuilder: (context, _) => const SizedBox(height: 15),
-        itemCount: demoTemplates.length + 1,
+        itemCount: demoTemplates.length + 2,
       ),
     );
   }
