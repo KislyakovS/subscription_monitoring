@@ -73,6 +73,8 @@ class SubscriptionCard extends StatelessWidget {
     final allDays =
         subscription.endDate.difference(subscription.startDate).inDays;
 
+    final procent = (allDays - remainedDays) / allDays;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -83,7 +85,7 @@ class SubscriptionCard extends StatelessWidget {
           child: LinePercent(
             fillColor: primaryColor.withOpacity(0.7),
             lineColor: primaryColor,
-            procent: (allDays - remainedDays) / allDays,
+            procent: procent.isNaN ? 1 : procent,
           ),
         )
       ],
