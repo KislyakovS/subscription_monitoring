@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'components/body.dart';
 
 class SettingsScreen extends StatelessWidget {
+  SettingsScreen({Key? key}) : super(key: key);
+
   static String routeName = '/settings';
 
   @override

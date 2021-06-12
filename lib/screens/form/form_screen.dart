@@ -40,8 +40,8 @@ class FormArguments {
   final bool isUpdate;
 
   FormArguments({
-    this.subscription = null,
-    this.template = null,
+    this.subscription,
+    this.template,
     this.isUpdate = false,
   });
 }
