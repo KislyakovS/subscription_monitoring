@@ -8,7 +8,9 @@ import 'list_subscription.dart';
 import '../../../components/components.dart';
 
 class Body extends StatefulWidget {
-  Body({Key? key}) : super(key: key);
+  Body({Key? key, required this.subscriptions}) : super(key: key);
+
+  final List<Subscription> subscriptions;
 
   @override
   _BodyState createState() => _BodyState();
@@ -34,7 +36,7 @@ class _BodyState extends State<Body> {
   }
 
   List<Subscription> filterSubscription(DateTime date) {
-    return demoSubscriptions
+    return widget.subscriptions
         .where((sub) => isSameDay(date, sub.endDate))
         .toList();
   }
