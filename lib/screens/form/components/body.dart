@@ -10,6 +10,7 @@ import 'package:subscription_monitoring/screens/bottom_navigation/bottom_navigat
 import 'package:subscription_monitoring/screens/form/components/row_data_picker.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
+import 'package:subscription_monitoring/utils/utils.dart';
 
 import '../data.dart';
 import 'row_dropdown.dart';
@@ -64,12 +65,18 @@ class _BodyState extends State<Body> {
   }
 
   Subscription _getNewSubscription() {
+    final diffDays = dateStart.difference(DateTime.now()).inDays;
+    final startDate = Utils.addMonth(count: -1, currentDate: dateStart);
+    final endDate = diffDays > 0
+        ? dateStart
+        : Utils.addMonth(count: 1, currentDate: dateStart);
+
     return Subscription(
       id: Random().nextInt(500),
       imageSrc: imageSrc,
       title: title.text,
-      startDate: DateTime.now(),
-      endDate: DateTime.now(),
+      startDate: startDate,
+      endDate: endDate,
       initDate: dateStart,
       price: double.parse(price.text),
     );

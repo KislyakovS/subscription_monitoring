@@ -6,4 +6,15 @@ class Utils {
 
     return format.format(time);
   }
+
+  static DateTime addMonth({
+    required int count,
+    required DateTime currentDate,
+  }) {
+    return DateTime(
+      currentDate.year,
+      currentDate.month + count,
+      currentDate.day,
+    );
+  }
 }
