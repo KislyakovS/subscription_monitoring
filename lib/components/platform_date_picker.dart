@@ -37,7 +37,7 @@ class _PlatformDatePickerState extends State<PlatformDatePicker> {
     showCupertinoModalPopup<CupertinoDatePicker>(
       context: context,
       builder: (context) => Container(
-        height: 300,
+        height: 250,
         color: Colors.white,
         child: CupertinoDatePicker(
           mode: CupertinoDatePickerMode.date,
