@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RowTextField extends StatelessWidget {
   const RowTextField({
@@ -7,11 +8,13 @@ class RowTextField extends StatelessWidget {
     required this.label,
     required this.controller,
     required this.placeholder,
+    this.formatters,
   }) : super(key: key);
 
   final String label;
   final TextEditingController controller;
   final String placeholder;
+  final List<TextInputFormatter>? formatters;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +41,7 @@ class RowTextField extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.transparent),
               ),
+              inputFormatters: formatters,
             ),
           ),
         ],
