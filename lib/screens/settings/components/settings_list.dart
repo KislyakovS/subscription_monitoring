@@ -12,10 +12,7 @@ class SettingsList extends StatelessWidget {
         children: [
           _buildRow(
             'Notifications',
-            PlatformSwitch(
-              value: true,
-              onChanged: (_) {},
-            ),
+            Switch.adaptive(value: true, onChanged: (_) {}),
           ),
           const Divider(),
           _buildRow(
