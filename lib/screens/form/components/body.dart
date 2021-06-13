@@ -99,6 +99,13 @@ class _BodyState extends State<Body> {
   }
 
   @override
+  void dispose() {
+    title.dispose();
+    price.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
