@@ -41,7 +41,7 @@ class _PlatformDropdownState extends State<PlatformDropdown> {
     showCupertinoModalPopup<CupertinoDatePicker>(
       context: context,
       builder: (context) => Container(
-        height: 300,
+        height: 250,
         color: Colors.white,
         child: CupertinoPicker(
           scrollController:
