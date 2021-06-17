@@ -6,7 +6,7 @@ class Wrapper extends StatelessWidget {
   final double padding;
   final double borderRadius;
   final String? title;
-  final String? buttonText;
+  final String? DefaultButton;
   final void Function()? press;
 
   const Wrapper({
@@ -15,7 +15,7 @@ class Wrapper extends StatelessWidget {
     this.padding = 20,
     this.borderRadius = 20,
     this.title,
-    this.buttonText,
+    this.DefaultButton,
     this.press,
   }) : super(key: key);
 
@@ -37,7 +37,7 @@ class Wrapper extends StatelessWidget {
       ),
       child: Column(
         children: [
-          if (title != null || buttonText != null) _buildContainerHeader(),
+          if (title != null || DefaultButton != null) _buildContainerHeader(),
           child
         ],
       ),
@@ -52,7 +52,7 @@ class Wrapper extends StatelessWidget {
           style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
         ),
       const Spacer(),
-      if (buttonText != null)
+      if (DefaultButton != null)
         TextButton(
           onPressed: press,
           style: ButtonStyle(
@@ -61,7 +61,7 @@ class Wrapper extends StatelessWidget {
             ),
           ),
           child: Text(
-            buttonText!,
+            DefaultButton!,
             style: const TextStyle(color: primaryColor, fontSize: 16),
           ),
         )

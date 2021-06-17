@@ -6,7 +6,7 @@ export 'line_percent.dart';
 export 'subscription_card.dart';
 export 'subscription_header.dart';
 export 'wrapper.dart';
-export 'button_text.dart';
+export 'default_button.dart';
 export 'platform_date_picker.dart';
 export 'container_image.dart';
 export 'platform_dropdown.dart';

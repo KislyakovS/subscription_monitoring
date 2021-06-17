@@ -11,7 +11,7 @@ class History extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrapper(
       title: 'History',
-      buttonText: 'Show all',
+      DefaultButton: 'Show all',
       press: () {},
       child: Column(
         children: List.generate(

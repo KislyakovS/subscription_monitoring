@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ButtonText extends StatelessWidget {
-  const ButtonText({
+class DefaultButton extends StatelessWidget {
+  const DefaultButton({
     Key? key,
     required this.title,
     required this.press,

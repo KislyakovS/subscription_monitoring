@@ -13,14 +13,14 @@ class Buttons extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: ButtonText(
+          child: DefaultButton(
             press: onTapEdit,
             title: 'Edit',
           ),
         ),
         const SizedBox(width: 15),
         Expanded(
-          child: ButtonText(
+          child: DefaultButton(
             press: onTapRemove,
             buttonColor: Colors.red,
             textColor: Colors.white,
