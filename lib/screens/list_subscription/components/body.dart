@@ -22,8 +22,8 @@ class Body extends StatelessWidget {
       child: ListView.separated(
         itemBuilder: (context, i) {
           if (i == 0) {
-            return BouncingButton(
-              press: () => _onTapSubscription(context, null),
+            return GestureDetector(
+              onTap: () => _onTapSubscription(context, null),
               child: const Wrapper(
                 padding: 15,
                 child: SubscriptionHeader(
@@ -41,8 +41,8 @@ class Body extends StatelessWidget {
             return const SizedBox(height: 20);
           }
 
-          return BouncingButton(
-            press: () => _onTapSubscription(context, demoTemplates[index]),
+          return GestureDetector(
+            onTap: () => _onTapSubscription(context, demoTemplates[index]),
             child: Wrapper(
               padding: 15,
               child: SubscriptionHeader(

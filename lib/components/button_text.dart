@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'components.dart';
-
 class ButtonText extends StatelessWidget {
   const ButtonText({
     Key? key,
@@ -18,8 +16,8 @@ class ButtonText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BouncingButton(
-      press: press,
+    return GestureDetector(
+      onTap: press,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(

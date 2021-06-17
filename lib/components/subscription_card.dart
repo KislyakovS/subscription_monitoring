@@ -16,8 +16,8 @@ class SubscriptionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BouncingButton(
-      press: press,
+    return GestureDetector(
+      onTap: press,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(20),
