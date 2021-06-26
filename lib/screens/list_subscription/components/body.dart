@@ -21,40 +21,24 @@ class Body extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: defaultPaddingScreen),
       child: ListView.separated(
         itemBuilder: (context, i) {
-          if (i == 0) {
-            return GestureDetector(
-              onTap: () => _onTapSubscription(context, null),
-              child: const Wrapper(
-                padding: 15,
-                child: SubscriptionHeader(
-                  title: 'Add new subscription',
-                  imageSrc: 'https://i.dlpng.com/static/png/94951_preview.png',
-                  imageSize: 60,
-                ),
-              ),
-            );
-          }
-
-          final index = i - 1;
-
-          if (index == demoTemplates.length) {
+          if (i == demoTemplates.length) {
             return const SizedBox(height: 20);
           }
 
           return GestureDetector(
-            onTap: () => _onTapSubscription(context, demoTemplates[index]),
+            onTap: () => _onTapSubscription(context, demoTemplates[i]),
             child: Wrapper(
               padding: 15,
               child: SubscriptionHeader(
-                title: demoTemplates[index].title,
-                imageSrc: demoTemplates[index].imageSrc,
+                title: demoTemplates[i].title,
+                imageSrc: demoTemplates[i].imageSrc,
                 imageSize: 60,
               ),
             ),
           );
         },
         separatorBuilder: (context, _) => const SizedBox(height: 15),
-        itemCount: demoTemplates.length + 2,
+        itemCount: demoTemplates.length + 1,
       ),
     );
   }

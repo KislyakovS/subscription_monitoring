@@ -16,7 +16,7 @@ class SubscriptionHeader extends StatelessWidget {
     required this.title,
     required this.imageSrc,
     this.date,
-    this.borderRadius = 15,
+    this.borderRadius = 20,
     this.imageSize = 70,
   }) : super(key: key);
 

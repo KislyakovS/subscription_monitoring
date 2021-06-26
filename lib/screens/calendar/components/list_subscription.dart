@@ -30,20 +30,19 @@ class ListSubscription extends StatelessWidget {
     );
   }
 
-  Column _buildListSubscription() {
-    return Column(
-      children: [
-        ...subscriptions.map(
-          (subscription) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: SubscriptionHeader(
-              title: subscription.title,
-              imageSrc: subscription.imageSrc,
-              date: subscription.endDate,
-            ),
-          ),
-        ),
-      ],
+  Widget _buildListSubscription() {
+    return ListView.separated(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (_, i) {
+        return SubscriptionHeader(
+          title: subscriptions[i].title,
+          imageSrc: subscriptions[i].imageSrc,
+          date: subscriptions[i].endDate,
+        );
+      },
+      separatorBuilder: (_, __) => const SizedBox(height: 15),
+      itemCount: subscriptions.length,
     );
   }
 }
