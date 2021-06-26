@@ -13,7 +13,7 @@ class Wrapper extends StatelessWidget {
     Key? key,
     required this.child,
     this.padding = 20,
-    this.borderRadius = 20,
+    this.borderRadius = 10,
     this.title,
     this.DefaultButton,
     this.press,
