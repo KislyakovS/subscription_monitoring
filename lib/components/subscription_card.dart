@@ -68,7 +68,7 @@ class SubscriptionCard extends StatelessWidget {
     );
   }
 
-  Column _buildProgress() {
+  Widget _buildProgress() {
     final remainedDays = subscription.endDate.difference(DateTime.now()).inDays;
     final allDays =
         subscription.endDate.difference(subscription.startDate).inDays;

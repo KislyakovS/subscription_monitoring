@@ -67,7 +67,9 @@ class _BodyState extends State<Body> {
 
   Subscription _getNewSubscription() {
     final diffDays = dateStart.difference(DateTime.now()).inDays;
-    final startDate = Utils.addMonth(count: -1, currentDate: dateStart);
+    final startDate = diffDays > 0
+        ? Utils.addMonth(count: -1, currentDate: dateStart)
+        : dateStart;
     final endDate = diffDays > 0
         ? dateStart
         : Utils.addMonth(count: 1, currentDate: dateStart);
