@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:subscription_monitoring/redux/store/store.dart';
+import 'package:subscription_monitoring/models/Subscription.dart';
 
 import 'components/body.dart';
 
@@ -18,14 +17,7 @@ class CalendarScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: StoreConnector<AppState, AppState>(
-        builder: (context, state) {
-          final subscriptions = state.subscriptions;
-
-          return Body(subscriptions: subscriptions);
-        },
-        converter: (store) => store.state,
-      ),
+      body: Body(subscriptions: <Subscription>[]),
     );
   }
 }

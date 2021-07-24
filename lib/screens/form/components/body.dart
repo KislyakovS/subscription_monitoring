@@ -2,12 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:subscription_monitoring/components/components.dart';
 import 'package:subscription_monitoring/models/Templates.dart';
-import 'package:subscription_monitoring/redux/actions/subscriptions_actions.dart';
-import 'package:subscription_monitoring/redux/store/store.dart';
-import 'package:subscription_monitoring/screens/bottom_navigation/bottom_navigation_screen.dart';
 import 'package:subscription_monitoring/screens/form/components/row_data_picker.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
@@ -85,21 +81,7 @@ class _BodyState extends State<Body> {
     );
   }
 
-  void _onTapSubmit() {
-    final store = StoreProvider.of<AppState>(context);
-
-    var subscription = _getNewSubscription();
-
-    if (widget.isUpdate) {
-      store.dispatch(UpdateSubscription(
-          id: widget.subscription!.id, subscription: subscription));
-      Navigator.of(context).pop();
-    } else {
-      store.dispatch(AddSubscription(subscription: subscription));
-      Navigator.of(context).pushNamedAndRemoveUntil(
-          ButtomNavigationScreen.routeName, (route) => false);
-    }
-  }
+  void _onTapSubmit() {}
 
   @override
   void dispose() {
