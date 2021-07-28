@@ -5,11 +5,11 @@ import 'list_subscription_model.dart';
 import 'list_subscription_provider.dart';
 
 class ListSubscriptionScreen extends StatelessWidget {
-  ListSubscriptionScreen({Key? key}) : super(key: key);
+  static String routeName = '/list_subscription';
 
   final _model = ListSubscriptionModel();
 
-  static String routeName = '/list_subscription';
+  ListSubscriptionScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
