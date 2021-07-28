@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
-import 'package:subscription_monitoring/models/Templates.dart';
 
 import 'components/body.dart';
 import 'form_model.dart';
@@ -26,19 +25,13 @@ class _FormScreenState extends State<FormScreen> {
       final arguments =
           ModalRoute.of(context)!.settings.arguments as FormArguments;
 
-      _model = FormModel(subscription: arguments.subscription);
+      _model = FormModel(
+          subscription: arguments.subscription, isUpdate: arguments.isUpdate);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // final arguments =
-    //     ModalRoute.of(context)!.settings.arguments as FormArguments;
-
-    // final subscription = arguments.subscription;
-    // final template = arguments.template;
-    // final isUpdate = arguments.isUpdate;
-
     final model = _model;
 
     if (model == null) {
@@ -70,6 +63,7 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final model = FormModelProvider.read(context)?.model;
+    final isUpdate = model?.isUpdate;
     final subscription = model?.subscription;
 
     return AppBar(
@@ -84,9 +78,9 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
                 MaterialStateColor.resolveWith((states) => Colors.transparent),
           ),
           onPressed: () => model?.save(),
-          child: const Text(
-            'Save',
-            style: TextStyle(color: Colors.black, fontSize: 18),
+          child: Text(
+            isUpdate == true ? 'Update' : 'Save',
+            style: const TextStyle(color: Colors.black, fontSize: 18),
           ),
         ),
         const SizedBox(width: 10)

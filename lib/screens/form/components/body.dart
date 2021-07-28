@@ -161,15 +161,6 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
-            Container(
-              width: double.infinity,
-              child: DefaultButton(
-                press: _onTapSubmit,
-                title: widget.isUpdate ? 'Update' : 'Save',
-              ),
-            ),
-            const SizedBox(height: 20)
           ],
         ),
       ),
