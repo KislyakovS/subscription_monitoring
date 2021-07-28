@@ -40,6 +40,8 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onPressed: () => model?.showDetails(context, null),
           icon: const Icon(Icons.add, size: 32),
         ),
