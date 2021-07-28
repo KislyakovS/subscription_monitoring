@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/models/Templates.dart';
+import 'package:subscription_monitoring/models/Subscription.dart';
 import 'package:subscription_monitoring/screens/screens.dart';
 
 class ListSubscriptionModel {
-  void showDetails(BuildContext context, Template? template) {
+  void showDetails(BuildContext context, Subscription? subscription) {
     Navigator.pushNamed(
       context,
       FormScreen.routeName,
-      arguments: FormArguments(template: template),
+      arguments: FormArguments(subscription: subscription),
     );
   }
 }

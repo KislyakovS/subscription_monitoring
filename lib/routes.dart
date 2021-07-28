@@ -10,5 +10,5 @@ final Map<String, WidgetBuilder> routes = {
   SettingsScreen.routeName: (context) => SettingsScreen(),
   ListSubscriptionScreen.routeName: (context) => ListSubscriptionScreen(),
   SubscriptionDetailsScreen.routeName: (context) => SubscriptionDetailsScreen(),
-  FormScreen.routeName: (context) => const FormScreen()
+  FormScreen.routeName: (context) => FormScreen()
 };
