@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/models/Templates.dart';
+import 'package:subscription_monitoring/screens/list_subscription/list_subscription_provider.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
 
 import '../../../components/components.dart';
-import '../../screens.dart';
 
 class Body extends StatelessWidget {
   Body({Key? key}) : super(key: key);
 
-  void _onTapSubscription(BuildContext context, Template? template) {
-    Navigator.pushNamed(context, FormScreen.routeName,
-        arguments: FormArguments(template: template)
-        //arguments: FormArguments(subscription: subscription),
-        );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final model = ListSubscriptionModelProvider.read(context)?.model;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: defaultPaddingScreen),
       child: ListView.separated(
@@ -26,7 +21,7 @@ class Body extends StatelessWidget {
           }
 
           return GestureDetector(
-            onTap: () => _onTapSubscription(context, demoTemplates[i]),
+            onTap: () => model?.showDetails(context, demoTemplates[i]),
             child: Wrapper(
               padding: 15,
               child: SubscriptionHeader(
