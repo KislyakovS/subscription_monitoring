@@ -10,10 +10,8 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: const EdgeInsets.symmetric(horizontal: defaultPaddingScreen),
-      child: ListSubscription(
-        subscriptions: <Subscription>[],
-      ),
+      padding: EdgeInsets.symmetric(horizontal: defaultPaddingScreen),
+      child: ListSubscription(),
     );
   }
 }

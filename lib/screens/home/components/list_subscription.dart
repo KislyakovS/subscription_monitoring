@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/components.dart';
 import 'package:subscription_monitoring/models/Subscription.dart';
-import 'package:subscription_monitoring/screens/screens.dart';
+
+import '../home_provider.dart';
 
 class ListSubscription extends StatelessWidget {
-  const ListSubscription({Key? key, required this.subscriptions})
-      : super(key: key);
-
-  final List<Subscription> subscriptions;
-
-  void _onTapSubscriptionCard(BuildContext context, Subscription subscription) {
-    Navigator.pushNamed(context, SubscriptionDetailsScreen.routeName,
-        arguments: SubscriptionDetailsArguments(subscription: subscription));
-  }
+  const ListSubscription({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final model = HomeModelProvider.read(context)?.model;
+    final subscriptions = model?.subscriptions ?? [];
+
+    if (subscriptions.isEmpty) {
+      return const EmptyMessage();
+    }
+
     return ListView.separated(
       itemBuilder: (context, index) {
         if (index == subscriptions.length) {
@@ -24,7 +24,7 @@ class ListSubscription extends StatelessWidget {
 
         return SubscriptionCard(
           subscription: subscriptions[index],
-          press: () => _onTapSubscriptionCard(context, subscriptions[index]),
+          press: () => model?.showDetails(context, subscriptions[index]),
         );
       },
       separatorBuilder: (context, _) => const SizedBox(height: 20),
