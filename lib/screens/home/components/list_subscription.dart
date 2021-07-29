@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/components.dart';
-import 'package:subscription_monitoring/models/Subscription.dart';
 
 import '../home_provider.dart';
 

@@ -51,7 +51,7 @@ class _SubscriptionDetailsScreenState extends State<SubscriptionDetailsScreen> {
             style: const TextStyle(color: Colors.black),
           ),
         ),
-        body: Body(),
+        body: const Body(),
       ),
     );
   }

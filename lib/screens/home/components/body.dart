@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:subscription_monitoring/models/Subscription.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
 
 import 'list_subscription.dart';
