@@ -1,29 +1,18 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:subscription_monitoring/components/components.dart';
-import 'package:subscription_monitoring/models/Templates.dart';
 import 'package:subscription_monitoring/screens/form/components/row_data_picker.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
-import 'package:subscription_monitoring/models/Subscription.dart';
-import 'package:subscription_monitoring/utils/utils.dart';
 
 import '../data.dart';
+import '../form_provider.dart';
 import 'row_dropdown.dart';
 import 'row_text_field.dart';
 
 class Body extends StatefulWidget {
   const Body({
     Key? key,
-    required this.subscription,
-    required this.template,
-    required this.isUpdate,
   }) : super(key: key);
-
-  final Subscription? subscription;
-  final Template? template;
-  final bool isUpdate;
 
   @override
   _BodyState createState() => _BodyState();
@@ -42,46 +31,22 @@ class _BodyState extends State<Body> {
   @override
   void initState() {
     super.initState();
-
-    if (widget.subscription != null) {
-      title = TextEditingController(text: widget.subscription!.title);
-      price =
-          TextEditingController(text: widget.subscription!.price.toString());
-      imageSrc = widget.subscription!.imageSrc;
-      dateStart = widget.subscription!.initDate;
-      currency = 0;
-      notification = 0;
-    } else {
-      title = TextEditingController(text: widget.template!.title);
-      price = TextEditingController(text: '');
-      imageSrc = widget.template!.imageSrc;
-      dateStart = DateTime.now();
-      currency = 0;
-      notification = 0;
-    }
   }
 
-  Subscription _getNewSubscription() {
-    final diffDays = dateStart.difference(DateTime.now()).inDays;
-    final startDate = diffDays > 0
-        ? Utils.addMonth(count: -1, currentDate: dateStart)
-        : dateStart;
-    final endDate = diffDays > 0
-        ? dateStart
-        : Utils.addMonth(count: 1, currentDate: dateStart);
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-    return Subscription(
-      id: Random().nextInt(500),
-      imageSrc: imageSrc,
-      title: title.text,
-      startDate: startDate,
-      endDate: endDate,
-      initDate: dateStart,
-      price: double.parse(price.text),
-    );
+    final model = FormModelProvider.read(context)?.model;
+    final subscription = model!.subscription;
+
+    title = TextEditingController(text: subscription?.title);
+    price = TextEditingController(text: subscription?.price.toString());
+    imageSrc = subscription?.imageSrc ?? '';
+    dateStart = subscription?.initDate ?? DateTime.now();
+    currency = 0;
+    notification = 0;
   }
-
-  void _onTapSubmit() {}
 
   @override
   void dispose() {

@@ -46,7 +46,7 @@ class _FormScreenState extends State<FormScreen> {
       model: model,
       child: Scaffold(
         appBar: _AppBar(),
-        // body: Body(),
+        body: Body(),
       ),
     );
   }
