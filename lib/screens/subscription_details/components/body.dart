@@ -1,29 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_monitoring/components/components.dart';
+import 'package:subscription_monitoring/screens/subscription_details/subscription_details_provider.dart';
 import 'package:subscription_monitoring/theme/constants.dart';
-import 'package:subscription_monitoring/models/Subscription.dart';
-import 'package:subscription_monitoring/screens/screens.dart';
 
 import 'buttons.dart';
 import 'chart.dart';
 
 class Body extends StatelessWidget {
-  final Subscription subscription;
-
-  const Body({Key? key, required this.subscription}) : super(key: key);
-
-  void _onTapEdit(BuildContext context) {
-    Navigator.pushNamed(
-      context,
-      FormScreen.routeName,
-      arguments: FormArguments(subscription: subscription, isUpdate: true),
-    );
-  }
+  const Body({Key? key}) : super(key: key);
 
   void _onTapRemove(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
+    final model = SubscriptionDetailsModelProvider.read(context)?.model;
+    final subscription = model!.subscription;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: defaultPaddingScreen),
       child: SingleChildScrollView(
@@ -36,7 +28,7 @@ class Body extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Buttons(
-              onTapEdit: () => _onTapEdit(context),
+              onTapEdit: () => model.showEdit(context),
               onTapRemove: () => _onTapRemove(context),
             ),
             const SizedBox(height: 20),

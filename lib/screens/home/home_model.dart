@@ -4,7 +4,8 @@ import 'package:subscription_monitoring/models/Subscription.dart';
 import '../screens.dart';
 
 class HomeModel {
-  var _subscriptions = <Subscription>[];
+  // var _subscriptions = <Subscription>[];
+  final _subscriptions = demoSubscriptions;
 
   List<Subscription> get subscriptions => _subscriptions.toList();
 
